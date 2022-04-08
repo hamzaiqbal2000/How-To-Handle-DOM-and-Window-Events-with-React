@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./FileNamer.css";
 
 const FileNamer = () => {
@@ -14,6 +14,17 @@ const FileNamer = () => {
     setAlert(false);
   };
 
+  useEffect(() => {
+    //run code when anything happens in the array changes
+    const handleWindowClick = () => setAlert(false);
+    if (alert) {
+      window.addEventListener("click", handleWindowClick);
+    } else {
+      window.removeEventListener("click", handleWindowClick);
+    }
+    return () => window.removeEventListener("click", handleWindowClick); // run code when the component unmounts
+  }, [alert, setAlert]);
+
   return (
     <div className="wrapper">
       <div className="preview">
@@ -28,23 +39,32 @@ const FileNamer = () => {
             onChange={(event) => {
               setName(event.target.value);
             }}
-            onFocus={() => setAlert(true)}
-            onBlur={() => setAlert(false)}
+            // onFocus={() => setAlert(true)}
+            // onBlur={() => setAlert(false)}
           />
         </label>
-        {alert && (
-          <div>
-            <span role="img" aria-lable="allowed">
-              ✅
-            </span>
-            Alphanumeric Characters
-            <br />
-            <span role="img" aria-label="not allowed">
-              ⛔️
-            </span>{" "}
-            *
-          </div>
-        )}
+        <div className="information-wrapper">
+          <button
+            className="information"
+            onClick={() => setAlert(true)}
+            type="button"
+          >
+            more information
+          </button>
+          {alert && (
+            <div className="popup">
+              <span role="img" aria-lable="allowed">
+                ✅
+              </span>
+              Alphanumeric Characters
+              <br />
+              <span role="img" aria-label="not allowed">
+                ⛔️
+              </span>
+              *
+            </div>
+          )}
+        </div>
         <div>
           <button onClick={validate}>Save</button>
         </div>
