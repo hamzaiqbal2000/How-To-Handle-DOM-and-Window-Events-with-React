@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import FileNamer from "./components/FileNamer/FileNamer";
 
 function App() {
+  //How To Handle DOM and Window Events with React
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FileNamer />
     </div>
   );
 }
 
 export default App;
+//react passes a special wrapper called syntheticEvent to event handler rather than the native browser Event
