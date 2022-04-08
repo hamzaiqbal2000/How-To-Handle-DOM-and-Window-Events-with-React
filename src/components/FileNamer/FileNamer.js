@@ -28,9 +28,23 @@ const FileNamer = () => {
             onChange={(event) => {
               setName(event.target.value);
             }}
+            onFocus={() => setAlert(true)}
+            onBlur={() => setAlert(false)}
           />
         </label>
-        {alert && <div>Forbidden Character: *</div>}
+        {alert && (
+          <div>
+            <span role="img" aria-lable="allowed">
+              ✅
+            </span>
+            Alphanumeric Characters
+            <br />
+            <span role="img" aria-label="not allowed">
+              ⛔️
+            </span>{" "}
+            *
+          </div>
+        )}
         <div>
           <button onClick={validate}>Save</button>
         </div>
