@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+## How To Handle DOM and Window Events with React
+Event handlers give you the opportunity to align your components with user actions. These will give your applications a rich experience and will increase the interactive possibilities of your app. They will also give you the ability to capture and respond to user actions.
+
+React’s event handlers let you keep your event callbacks integrated with the HTML so that you can share functionality and design across an application. In most cases, you should focus on adding event handlers directly to DOM elements, but in situations where you need to capture events outside of the component, you can add event listeners and clean them up when they are no longer in use to prevent memory leaks and create performative applications.
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
